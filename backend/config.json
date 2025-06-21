@@ -1,0 +1,14 @@
+{
+  "fit_score_cutoffs": {
+    "strong_fit": 0.75,
+    "moderate_fit": 0.4,
+    "weak_fit": 0.0
+  },
+  "skill_aliases": {
+    "Amazon Web Services": "AWS",
+    "Nodejs": "Node.js",
+    "Node js": "Node.js",
+    "Postgres": "SQL"
+  },
+  "max_steps_per_skill": 4
+}

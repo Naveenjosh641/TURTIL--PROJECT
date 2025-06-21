@@ -1,0 +1,19 @@
+{
+  "skills": [
+    "Python", "Java", "JavaScript", "TypeScript", "C", "C++", "C#", "Go", "Rust",
+    "HTML", "CSS", "SASS", "Bootstrap",
+    "React", "Angular", "Vue.js", "Next.js", "Express.js", "Node.js",
+    "Flask", "Django", "Spring", "ASP.NET",
+    "SQL", "MySQL", "PostgreSQL", "SQLite", "MongoDB", "Redis", "Cassandra",
+    "Docker", "Kubernetes", "AWS", "Azure", "GCP",
+    "Firebase", "Heroku", "Netlify", "Nginx",
+    "Linux", "Windows", "MacOS",
+    "REST APIs", "GraphQL", "gRPC",
+    "Jenkins", "GitHub Actions", "CI/CD",
+    "Git", "GitLab", "Bitbucket",
+    "System Design", "Microservices", "Monolith", "MVC", "Event-Driven Architecture",
+    "Unit Testing", "Integration Testing", "TDD", "Jest", "Mocha", "PyTest",
+    "Agile", "Scrum", "Kanban",
+    "JSON", "XML", "YAML"
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "Python": {
+    "steps": [
+      "Learn basic syntax and data types",
+      "Understand functions, loops, and conditionals",
+      "Explore object-oriented programming",
+      "Build a simple CLI or web app"
+    ]
+  },
+  "JavaScript": {
+    "steps": [
+      "Understand syntax, DOM, and events",
+      "Learn ES6+ features",
+      "Work with async/await and fetch APIs",
+      "Build interactive web pages"
+    ]
+  },
+  "React": {
+    "steps": [
+      "Learn JSX and component structure",
+      "Handle state and props",
+      "Use hooks like useState and useEffect",
+      "Build a small project"
+    ]
+  },
+  "Node.js": {
+    "steps": [
+      "Install Node.js and run scripts",
+      "Learn async programming in JS",
+      "Use Express.js to build REST APIs",
+      "Connect to a database like MongoDB"
+    ]
+  },
+  "MongoDB": {
+    "steps": [
+      "Install MongoDB locally or use Atlas",
+      "Perform CRUD operations",
+      "Design collections and schemas",
+      "Integrate with Node.js or Python"
+    ]
+  },
+  "SQL": {
+    "steps": [
+      "Learn basic SQL syntax",
+      "Understand SELECT, JOIN, and WHERE",
+      "Practice with real datasets",
+      "Use PostgreSQL or MySQL"
+    ]
+  },
+  "Docker": {
+    "steps": [
+      "Understand containers vs virtual machines",
+      "Install Docker and use CLI",
+      "Write a Dockerfile",
+      "Build and run containers locally"
+    ]
+  },
+  "AWS": {
+    "steps": [
+      "Understand core services: EC2, S3, IAM",
+      "Launch an EC2 instance",
+      "Set up basic security groups",
+      "Deploy a simple app"
+    ]
+  },
+  "Git": {
+    "steps": [
+      "Initialize and clone repos",
+      "Commit, push, and pull changes",
+      "Use branches and merge code",
+      "Resolve merge conflicts"
+    ]
+  },
+  "System Design": {
+    "steps": [
+      "Understand scalability and availability",
+      "Learn about load balancers and queues",
+      "Study database sharding and caching",
+      "Practice designing real-world systems"
+    ]
+  },
+  "Flask": {
+    "steps": [
+      "Set up Flask and routing",
+      "Render templates and handle forms",
+      "Build RESTful APIs",
+      "Deploy Flask app locally"
+    ]
+  },
+  "Django": {
+    "steps": [
+      "Install Django and create a project",
+      "Define models and use admin interface",
+      "Build views and templates",
+      "Implement REST APIs with DRF"
+    ]
+  },
+  "TypeScript": {
+    "steps": [
+      "Understand types and interfaces",
+      "Convert JS to TS",
+      "Use TypeScript with React or Node",
+      "Build a typed project"
+    ]
+  },
+  "PostgreSQL": {
+    "steps": [
+      "Install PostgreSQL and connect to DB",
+      "Use SQL for data manipulation",
+      "Work with indexes and views",
+      "Integrate with backend applications"
+    ]
+  },
+  "Linux": {
+    "steps": [
+      "Learn basic commands and file structure",
+      "Use chmod, grep, and find",
+      "Manage processes and packages",
+      "Write basic shell scripts"
+    ]
+  },
+  "GraphQL": {
+    "steps": [
+      "Understand schema and resolvers",
+      "Write basic queries and mutations",
+      "Use Apollo Client or Graphene",
+      "Build a full-stack app with GraphQL"
+    ]
+  },
+  "CI/CD": {
+    "steps": [
+      "Learn GitHub Actions or Jenkins",
+      "Set up test and build pipelines",
+      "Deploy automatically on push",
+      "Monitor and rollback deployments"
+    ]
+  },
+  "HTML": {
+    "steps": [
+      "Understand HTML structure and tags",
+      "Build forms and layouts",
+      "Use semantic HTML",
+      "Create static web pages"
+    ]
+  },
+  "CSS": {
+    "steps": [
+      "Learn selectors and properties",
+      "Use Flexbox and Grid",
+      "Style components responsively",
+      "Use pre-processors like SASS"
+    ]
+  }
+}
