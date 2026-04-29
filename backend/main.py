@@ -1,22 +1,4 @@
-"""
-Turtil – FastAPI backend
-───────────────────────
-Exposes three main endpoints:
-
-GET  /health         – simple uptime ping
-GET  /version        – returns model / API version
-POST /evaluate       – resume ↔︎ job-description fit analysis
-                       (legacy alias /evaluate-fit kept for tests)
-
-The service loads skill & config data from the JSON files that
-are already present in the repository:
-* skills.json
-* config.json
-* learning_path_skills.json
-"""
-
 from __future__ import annotations
-
 import json
 import os
 import re
@@ -26,10 +8,6 @@ from typing import List
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-
-# ───────────────────────────────────────────────────────────────
-# Data loading helpers
-# ───────────────────────────────────────────────────────────────
 
 BASE_DIR = Path(__file__).parent
 
@@ -48,10 +26,6 @@ SETTINGS = _load_json("config.json")
 ALL_SKILLS: List[str] = SKILL_CONFIG.get("skills", [])
 SKILL_ALIASES = SETTINGS.get("skill_aliases", {})
 THRESHOLDS = SETTINGS.get("fit_score_cutoffs", {})
-
-# ───────────────────────────────────────────────────────────────
-# Helper functions
-# ───────────────────────────────────────────────────────────────
 
 def normalise_skill(token: str) -> str:
     """Apply alias mapping (e.g. 'Amazon Web Services' → 'AWS')."""
@@ -86,10 +60,6 @@ def build_learning_path(missing: List[str]) -> List[dict]:
             )
     return steps
 
-# ───────────────────────────────────────────────────────────────
-# FastAPI app & models
-# ───────────────────────────────────────────────────────────────
-
 app = FastAPI(
     title="Turtil Resume ↔︎ Role Fit API",
     version="1.0.0",
@@ -120,9 +90,7 @@ class FitResponse(BaseModel):
     missing_skills: List[str]
     recommended_learning_path: List[LearningStep]
 
-# ───────────────────────────────────────────────────────────────
-# Endpoints
-# ───────────────────────────────────────────────────────────────
+
 
 @app.get("/health")
 def health() -> dict:
@@ -151,10 +119,6 @@ def evaluate(req: EvaluateRequest):
         "recommended_learning_path": build_learning_path(missing),
         "status":"success"
     }
-
-# ───────────────────────────────────────────────────────────────
-# Local dev entry-point
-# ───────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
     import uvicorn
