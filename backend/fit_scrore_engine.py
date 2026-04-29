@@ -1,6 +1,4 @@
 import json
-
-# Load thresholds from config.json
 with open('config.json') as f:
     config = json.load(f)
     thresholds = config.get("fit_score_thresholds", {})
