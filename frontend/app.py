@@ -1,14 +1,4 @@
-"""
-Turtil – Streamlit Resume ⇆ Role-Fit Evaluator
-──────────────────────────────────────────────
-* Front-end for the FastAPI backend at https://turtil-project.onrender.com
-* Lets users paste or upload a resume (PDF / DOCX) and a job description
-* Sends them to /evaluate and renders fit-score, missing skills, learning path
-* Robust file-parsing so bad PDFs never crash the app
-"""
-
 from __future__ import annotations
-
 import io
 import os
 import textwrap
@@ -18,19 +8,10 @@ from typing import List, Optional
 import requests
 import streamlit as st
 from dotenv import load_dotenv
-
-# ───────────────────────────────────────────────────────────────
-# Configuration
-# ───────────────────────────────────────────────────────────────
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / ".env")
 
-# Hard-coded fallback URL; override in .env if you like
 BACKEND_URL: str = os.getenv("BACKEND_URL", "https://turtil-project.onrender.com").rstrip("/")
-
-# ───────────────────────────────────────────────────────────────
-# Page Setup
-# ───────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="Turtil Resume ↔︎ Role Fit Evaluator",
     page_icon="🐢",
@@ -42,10 +23,6 @@ st.write(
     "Paste your *resume* and the *job description* below, then click *Evaluate* "
     "to get the fit score, missing skills, and a personalised learning path."
 )
-
-# ───────────────────────────────────────────────────────────────
-# File-to-text helpers
-# ───────────────────────────────────────────────────────────────
 def _read_pdf_pymupdf(data: bytes) -> Optional[str]:
     try:
         import fitz  # PyMuPDF
@@ -101,14 +78,9 @@ def extract_text_safe(uploaded_file) -> str:
             "or not a real PDF/DOCX. Please paste the text manually or upload a clean file."
         )
         text = ""
-
-    # Reset stream pointer so Streamlit can reuse the file if needed
     uploaded_file.seek(0)
     return text.strip()
 
-# ───────────────────────────────────────────────────────────────
-# Sidebar – backend tools
-# ───────────────────────────────────────────────────────────────
 with st.sidebar:
     st.header("⚙️ Backend")
     st.write(f"Endpoint: {BACKEND_URL}")
@@ -122,12 +94,7 @@ with st.sidebar:
             st.error(f"Backend not reachable – {exc}")
 
     st.markdown(f"[Open API docs]({BACKEND_URL}/docs)")
-
-# ───────────────────────────────────────────────────────────────
-# Main form
-# ───────────────────────────────────────────────────────────────
 with st.form("fit_form", clear_on_submit=False, border=True):
-    # ─── Resume input ──────────────────────────────────────────
     st.subheader("1. Resume")
     resume_tab1, resume_tab2 = st.tabs(["📄 Paste text", "📑 Upload PDF / DOCX"])
     resume_text: str = ""
@@ -153,8 +120,6 @@ with st.form("fit_form", clear_on_submit=False, border=True):
                 resume_tab1.text_area(
                     "", resume_text, height=250, key="resume_text_extracted"
                 )
-
-    # ─── Job Description input ────────────────────────────────
     st.subheader("2. Job Description")
     jd_text = st.text_area(
         "Paste the *job description* here ⬇️",
@@ -163,12 +128,7 @@ with st.form("fit_form", clear_on_submit=False, border=True):
         key="jd_text",
     )
 
-    # ─── Submit button – ALWAYS rendered, even on exceptions ──
     submitted = st.form_submit_button("🚀 Evaluate 📊")
-
-# ───────────────────────────────────────────────────────────────
-# On submit – call backend
-# ───────────────────────────────────────────────────────────────
 if submitted:
     if not resume_text.strip() or not jd_text.strip():
         st.warning("Please provide *both* resume and job-description text.")
@@ -193,7 +153,6 @@ if submitted:
             st.error(f"❌ Backend request failed – {exc}")
             st.stop()
 
-    # ─── Render results ───────────────────────────────────────
     st.success("Analysis complete!")
 
     fit_score = data.get("fit_score")
@@ -216,8 +175,5 @@ if submitted:
     with st.expander("🛠 Raw backend response"):
         st.json(data)
 
-# ───────────────────────────────────────────────────────────────
-# Footer
-# ───────────────────────────────────────────────────────────────
 st.divider()
 st.caption("Made with ❤️ and 🐢 by Team Apogee · Backend: FastAPI · Front-end: Streamlit")
